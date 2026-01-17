@@ -1,7 +1,9 @@
 package com.linkloom.core.api.controller;
 
+import com.linkloom.core.api.response.CoreResponse;
 import com.linkloom.core.api.routes.ApiRoutes;
-import lombok.Getter;
+import com.linkloom.core.service.api.web.input.HealthInputService;
+import com.linkloom.core.service.api.web.output.HealthResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,17 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(ApiRoutes.HEALTH)
 public class HealthController {
 
-    @GetMapping
-    public HealthResponse health() {
-        return new HealthResponse("UP");
+    private final HealthInputService inputService;
+
+    public HealthController(HealthInputService inputService) {
+        this.inputService = inputService;
     }
 
-    @Getter
-    public static class HealthResponse {
-        public String status;
+    @GetMapping
+    public CoreResponse health() {
+        inputService.execute(null);
 
-        public HealthResponse(String status) {
-            this.status = status;
-        }
+        HealthResult result = inputService.getOutputService().getResult();
+
+        return new CoreResponse(result.getStatus(), result.getMessage());
     }
 }
