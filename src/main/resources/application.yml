@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: linkloom-scheduler-core
+  jpa:
+    hibernate:
+      ddl-auto: update
+  web:
+    error:
+      whitelabel:
+        enabled: false
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/linkloom
+#    username: admin
+#    password: admin123
+#  data:
+#    mongodb:
+#      uri: mongodb://admin:admin123@localhost:27017/linkloom?authSource=admin
+
+server:
+  port: 8081
+  servlet:
+    context-path: /api/core
+
+logging:
+  level:
+    com.linkloom: DEBUG
