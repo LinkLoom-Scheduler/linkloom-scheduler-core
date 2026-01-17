@@ -1,12 +1,13 @@
 package com.linkloom.core.api.controller;
 
+import com.linkloom.core.api.routes.ApiRoutes;
 import lombok.Getter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/health")
+@RequestMapping(ApiRoutes.HEALTH)
 public class HealthController {
 
     @GetMapping

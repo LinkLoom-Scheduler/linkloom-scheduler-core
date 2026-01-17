@@ -4,6 +4,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  web:
+    error:
+      whitelabel:
+        enabled: false
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/linkloom
 #    username: admin
